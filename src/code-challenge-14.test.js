@@ -1,4 +1,4 @@
-import { sortByChildren, replaceZeros, validatePin } from './code-challenge-14';
+import { sortByChildren, replaceZeros, validatePin, validateWord } from './code-challenge-14';
 
 let characters = [
   {
@@ -64,3 +64,12 @@ describe('Testing challenge 3', () => {
     expect(validatePin('97214')).toBe(false);
   });
 });
+
+describe('Testing challenge 3', () => {
+  test('if the word is between 5 and 10 characters long, return true, else false', () => {
+    expect(validateWord('supercalifragilistic')).toBe(false);
+    expect(validateWord('gritty')).toBe(true);
+  });
+});
+
+

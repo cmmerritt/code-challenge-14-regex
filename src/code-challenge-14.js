@@ -12,6 +12,18 @@ export function replaceZeros(str) {
 // now I'm getting an error that git can't access my repo to pull my latest changes. I was able to push/pull my first passing test and googling didn't help (everyone else had issues with their local repo and mine is set up correctly) so idk
 
 export function validatePin(str) {
-  return (str.match(/^[0-9]{4}$/)) ? true : false;
+  return str.match(/^[0-9]{4}$/) ? true : false;
 }
+
+// same git error
+
+/* export function validateWord(str) {
+  return str.match(/[a-z]{5, 10}/) ? true : false;
+}
+ */
+
+export function validateWord(str) {
+  return str.match(/^[a-z]{5,10}$/) ? true : false;
+}
+
 
