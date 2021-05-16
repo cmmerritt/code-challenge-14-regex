@@ -1,4 +1,4 @@
-import { sortByChildren, replaceZeros } from './code-challenge-14';
+import { sortByChildren, replaceZeros, validatePin } from './code-challenge-14';
 
 let characters = [
   {
@@ -52,9 +52,15 @@ describe('Testing challenge 1', () => {
   });
 });
 
-describe('Testing challenge 1', () => {
+describe('Testing challenge 2', () => {
   test('given a string, uses Regex to replace all 0 with the word zero', () => {
     expect(replaceZeros('10432060')).toStrictEqual('1zero432zero6zero');
   });
 });
 
+describe('Testing challenge 3', () => {
+  test('given a string, if it has four numerical digits, return true', () => {
+    expect(validatePin('1144')).toBe(true);
+    expect(validatePin('97214')).toBe(false);
+  });
+});
