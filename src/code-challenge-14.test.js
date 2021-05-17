@@ -1,4 +1,4 @@
-import { sortByChildren, containsW, isNum, containsWorld, isCapitalized, citiesAtoJ } from './code-challenge-14';
+import { sortByChildren, replaceZeros, validatePin, validateWord } from './code-challenge-14';
 
 let characters = [
   {
@@ -53,43 +53,23 @@ describe('Testing challenge 1', () => {
 });
 
 describe('Testing challenge 2', () => {
-  test.skip('It should return true if it has a W', () => {
-    expect(containsW('hello world')).toStrictEqual(true);
-    expect(containsW('Hello World')).toStrictEqual(false);
-    expect(containsW('hello everyone')).toStrictEqual(false);
+  test('given a string, uses Regex to replace all 0 with the word zero', () => {
+    expect(replaceZeros('10432060')).toStrictEqual('1zero432zero6zero');
   });
 });
 
 describe('Testing challenge 3', () => {
-  test.skip('It should return true if it has a number', () => {
-    expect(isNum(1234567890)).toStrictEqual(true);
-    expect(isNum('12345')).toStrictEqual(true);
-    expect(isNum('h3llo w0rld')).toStrictEqual(true);
-    expect(isNum('hello world')).toStrictEqual(false);
-    expect(isNum('')).toStrictEqual(false);
+  test('given a string, if it has four numerical digits, return true', () => {
+    expect(validatePin('1144')).toBe(true);
+    expect(validatePin('97214')).toBe(false);
   });
 });
 
-describe('Testing challenge 4', () => {
-  test.skip('It should return true if it has world, case sensitive', () => {
-    expect(containsWorld('hello world')).toStrictEqual(true);
-    expect(containsWorld('Hello World')).toStrictEqual(false);
-    expect(containsWorld('hello everyone')).toStrictEqual(false);
+describe('Testing challenge 3', () => {
+  test('if the word is between 5 and 10 characters long, return true, else false', () => {
+    expect(validateWord('supercalifragilistic')).toBe(false);
+    expect(validateWord('gritty')).toBe(true);
   });
 });
 
-describe('Testing challenge 5', () => {
-  test.skip('It should return words if they contain a W', () => {
-    expect(isCapitalized('We only want to Return the Words that begin With a capital Letter')).toStrictEqual(['We', 'Return', 'Words', 'With', 'Letter']);
-    expect(isCapitalized('Given by our hand in the meadow that is called Runnymede, between Windsor and Staines, on the fifteenth day of June in the seventeenth year of our reign (i.e. 1215: the new regnal year began on 28 May).')).toStrictEqual(['Given', 'Runnymede', 'Windsor', 'Staines', 'June', 'May']);
-    expect(isCapitalized('these words are all failures')).toStrictEqual([]);
-  });
-});
 
-describe('Testing challenge 6', () => {
-  test.skip('It should return cities starting with letters a to j', () => {
-    expect(citiesAtoJ(['Cleveland', 'San Diego', 'Birmingham', 'Seattle', 'Miami', 'New York City', 'Omaha', 'Portland', 'Austin', 'Boston', 'Newport Beach', 'Hoboken'])).toStrictEqual('Cleveland', 'Birmingham', 'Austin', 'Boston', 'Hoboken');
-    expect(citiesAtoJ(['Albuquerque', 'Chicago', 'Philadelphia', 'Newark', 'Sacramento', 'Eugene'])).toStrictEqual(['Albuquerque', 'Chicago', 'Eugene']);
-    expect(citiesAtoJ([])).toStrictEqual([]);
-  });
-});
